@@ -11,7 +11,7 @@ Include the package as dependency under the composer.json file.
 To install, either run
 
 ```bash
-$ php composer.phar require jlorente/yii2-rules "*"
+$ php composer.phar require jlorente/yii2-roles "*"
 ```
 
 or add
@@ -20,7 +20,7 @@ or add
 ...
     "require": {
         // ... other configurations ...
-        "jlorente/yii2-rules": "*"
+        "jlorente/yii2-roles": "*"
     }
 ```
 
