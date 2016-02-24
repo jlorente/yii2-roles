@@ -1,0 +1,19 @@
+{
+    "name": "jlorente/yii2-roles",
+    "description": "A Yii2 extension which includes the concept of roles into the application, which can be assigned to users and checked at the level of access to the controllers",
+    "keywords": ["yii2", "roles", "access", "controller", "rules"],
+    "homepage": "https://github.com/jlorente/yii2-roles",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Lorente Martin",
+            "email": "jose.lorente.martin@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "jlorente\\roles\\": "src/"
+        }
+    }
+}
