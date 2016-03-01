@@ -32,7 +32,8 @@ class RoleControl {
      * @return bool
      */
     public static function check(Roleable $roleable, $role) {
-        return ($roleable->getRole() & $role) === $role;
+        $r = static::extractRoleValue($roleable, $role);
+        return ($roleable->getRole() & $r) === $r;
     }
 
     /**

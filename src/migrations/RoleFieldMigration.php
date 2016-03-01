@@ -7,7 +7,7 @@
  * @version     1.0
  */
 
-namespace jlorente\roles\migration;
+namespace jlorente\roles\migrations;
 
 use yii\db\Schema;
 use yii\db\Migration;
