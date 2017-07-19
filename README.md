@@ -31,7 +31,7 @@ $ composer update
 $ ./yii migrate --migrationPath=@vendor/jlorente/yii2-roles/src/migrations
 ```
 
-###Migration
+### Migration
 Apply the package migration
 ```bash
 $ ./yii migrate --migrationPath=@vendor/jlorente/yii2-roles/src/migrations
@@ -64,10 +64,10 @@ return [
         , 'roles'
     ]
 ]
+```
+#### Options
 
-####Options
-
-#####user
+##### user
 The user parameter force the application to use the web User class included in 
 the module that allows the authentication of user sessions with differents roles. 
 That means for example that a user that owns two roles can access the application 
@@ -76,7 +76,7 @@ with only one of them active.
 This is useful when you are building an application with frontend and backend 
 sections and you don't want to share the login between them.
 
-#####roles
+##### roles
 The roles array can contain any scalar values, but they must be unique along the 
 collection. 
 
@@ -90,7 +90,7 @@ be affected, but be aware that changing the order of the collection after having
 used it will cause that previous assigned roles will have now other values, so 
 don't change the order of the roles once set and used.
 
-#####matchAgainstSession
+##### matchAgainstSession
 If this param is set to true, you will have to specify the roles that the web 
 user will own on login. The access rules of the controller actions will match 
 against the roles assigned to the web user instead of the roles of the identity 
@@ -98,7 +98,7 @@ model.
 
 ## Usage
 
-###The Roleable class
+### The Roleable class
 
 The ActiveRecord class that owns the role attribute (usually table user and class
 User) MUST implement the RoleableInterface.
@@ -124,7 +124,7 @@ class User extends yii\db\ActiveRecord implements RoleableInterface {
 }
 ```
 
-####Assigning roles to the Roleable
+#### Assigning roles to the Roleable
 
 You can easyly add roles to a Roleable object using the Role class.
 
@@ -136,7 +136,7 @@ jlorente\roles\models\Role::sAssign($user, 'User');
 $user->save();
 ```
 
-###Controller access control
+### Controller access control
 
 You can filter the access to the controller actions by using the AccessControl 
 class of the module.
@@ -184,7 +184,7 @@ access the actions.
 As you can see in the above example, yo can override the matchAgainstSession 
 attribute defined in the Module class for a single rule.
 
-###Matching the controller access against the session
+### Matching the controller access against the session
 
 As told before, setting the matchAgainstSession attribute to true implies that 
 the session data must store the logged role. 
