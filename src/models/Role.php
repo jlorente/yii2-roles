@@ -123,7 +123,7 @@ class Role {
      */
     protected static function ensureRoles($force = false) {
         if (empty(static::$roles) === true || $force === true) {
-            static::$roles = array_flip(Module::instance()->roles);
+            static::$roles = array_flip(Module::getInstance()->roles);
         }
     }
 
