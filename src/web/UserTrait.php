@@ -196,7 +196,7 @@ trait UserTrait {
     public function hasRole($role) {
         return Role::sHasRole($this, $role);
     }
-    
+
     /**
      * Renews the identity cookie.
      * This method will set the expiration time of the identity cookie to be the current time
@@ -214,6 +214,20 @@ trait UserTrait {
                 Yii::$app->getResponse()->getCookies()->add($cookie);
             }
         }
+    }
+
+    /**
+     * @inheritdoc
+     * 
+     * @param IdentityInterface $identity the user identity (which should already be authenticated)
+     * @param int $duration number of seconds that the user can remain in logged-in status, defaults to `0`
+     * @return bool whether the user is logged in
+     */
+    public function login(IdentityInterface $identity, $duration = 0) {
+        if (!$this->role) {
+            $this->role = $identity->getRole();
+        }
+        return parent::login($identity, $duration);
     }
 
 }

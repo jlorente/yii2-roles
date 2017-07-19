@@ -14,29 +14,9 @@ use yii\base\BootstrapInterface;
 use yii\base\Module as BaseModule;
 
 /**
- * Gets the full collection of possible roles of the roleable.
- * 
- * The array can contain any scalar values, but they must be unique 
- * along the collection. 
- * 
- * This returned values represent your roles values. The internal 
- * values of the Roleable are set depending on the order of the collection 
- * following the rules of a flag field.
- * So [role0, role1, role2, ..., roleN] will become [1, 2, 4, ..., (1 << N)]
- * 
- * You can add new roles at the end of the array and nothing created earlier 
- * will be affected, but be aware that changing the order of the collection 
- * after having used it will cause that previous assigned roles will have now 
- * other values, so don't change the order the roles once set and used.
- * 
- * @return mixed[]
- * @see https://en.wikipedia.org/wiki/Flag_field
- */
-
-/**
  * Module class for the Roles module.
  * 
- * You must add this module to the module section and the bootrap section of 
+ * You must add this module to the module section and the bootstrap section of 
  * the application config file in order to make it work.
  * 
  * ../your_app/config/main.php
@@ -48,6 +28,9 @@ use yii\base\Module as BaseModule;
  *         'roles' => [
  *             'class' => 'jlorente\roles\Module'
  *              //options
+ *              , 'user' => 'jlorente\roles\web\User'
+ *              , 'roles' => ['Admin', 'User', 'Teacher']
+ *              , 'matchAgainstSession' => false
  *          ]
  *     ],
  *     'bootstrap' => [
@@ -61,7 +44,7 @@ use yii\base\Module as BaseModule;
  *      'user' => 'jlorente\roles\web\User'
  *      , 'roles' => ['Admin', 'User', 'Teacher']
  *      , 'matchAgainstSession' => false
- *  ]
+ * ]
  * 
  * The roles array can contain any scalar values, but they must be unique along 
  * the collection. 
@@ -74,7 +57,7 @@ use yii\base\Module as BaseModule;
  * You can add new roles at the end of the array and nothing created earlier 
  * will be affected, but be aware that changing the order of the collection 
  * after having used it will cause that previous assigned roles will have now 
- * other values, so don't change the order the roles once set and used.
+ * other values, so don't change the order of the roles once set and used.
  * 
  * @see \jlorente\roles\web\User for more detailed options of the web user component.
  * 
@@ -101,7 +84,7 @@ class Module extends BaseModule implements BootstrapInterface {
     /**
      * Platform available roles.
      * 
-     * @var array
+     * @var mixed[]
      */
     public $roles = [
         'User'

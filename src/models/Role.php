@@ -77,7 +77,8 @@ class Role {
      */
     public static function sAssign(Roleable $roleable, $role) {
         $r = static::extractRoleValue($role);
-        $roleable->setRole($roleable->getRole() | $r);
+        $rR = $roleable->getRole() ? $roleable->getRole() : 0;
+        $roleable->setRole($rR | $r);
     }
 
     /**
