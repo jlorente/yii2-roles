@@ -6,9 +6,6 @@
  * @copyright   José Lorente
  * @version     1.0
  */
-
-namespace jlorente\roles\migrations;
-
 use yii\db\Schema;
 use yii\db\Migration;
 
@@ -57,4 +54,5 @@ class m170719_115738_jlorente_yii2_roles_extension_migration extends Migration {
     public function roleableTableName() {
         return '{{%user}}';
     }
+
 }
