@@ -15,14 +15,17 @@ use yii\db\Migration;
 /**
  * Migration that creates the role field in the provided table name. 
  * 
- * Create a migration in your project, extend the class from this class, 
- * implement the abstract method and the run migrations.
+ * To apply this migration run:
+ * ```bash
+ * $ ./yii migrate --migrationPath=@app/vendor/jlorente/yii2-roles/src/migrations
+ * ```
+ * or extend this migration in your project and apply it as usually.
  * 
- * Override the roleFieldName in order to provide another role field name.
+ * You can override the roleFieldName in order to provide another role field name.
  * 
  * @author José Lorente <jose.lorente.martin@gmail.com>
  */
-abstract class RoleFieldMigration extends Migration {
+class m170719_115738_jlorente_yii2_roles_extension_migration extends Migration {
 
     /**
      * @inheritdoc
@@ -51,5 +54,7 @@ abstract class RoleFieldMigration extends Migration {
     /**
      * Returns the table name where the role field has to be set.
      */
-    abstract public function roleableTableName();
+    public function roleableTableName() {
+        return '{{%user}}';
+    }
 }

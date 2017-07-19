@@ -41,37 +41,16 @@ interface Roleable {
 
     /**
      * Sets the role value of the roleable object. No validation are needed since they 
-     * were done in the Role object.
+     * were done it in the Role object.
      * 
-     * @param $v The role value to be set
+     * @param int $v The role value to be set
      */
     public function setRole($v);
 
     /**
      * Gets the role value of the roleable object.
      * 
-     * @return int The current role value
+     * @return int The current internal role value
      */
     public function getRole();
-
-    /**
-     * Gets the full collection of possible roles of the roleable.
-     * 
-     * The array can contain any scalar values, but they must be unique 
-     * along the collection. 
-     * 
-     * This returned values represent your roles values. The internal 
-     * values of the Roleable are set depending on the order of the collection 
-     * following the rules of a flag field.
-     * So [role0, role1, role2, ..., roleN] will become [1, 2, 4, ..., (1 << N)]
-     * 
-     * You can add new roles at the end of the array and nothing created earlier 
-     * will be affected, but be aware that changing the order of the collection 
-     * after having used it will cause that previous assigned roles will have now 
-     * other values, so don't change the order the roles once set and used.
-     * 
-     * @return mixed[]
-     * @see https://en.wikipedia.org/wiki/Flag_field
-     */
-    public function getValidRoles();
 }

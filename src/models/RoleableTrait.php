@@ -20,30 +20,6 @@ namespace jlorente\roles\models;
 trait RoleableTrait {
 
     /**
-     * Return the rules of the role property. Merge this array with the rest of 
-     * the rules.
-     * 
-     * ```php
-     *  class User extends ActiveRecord implements Roleable {
-     *      
-     *      use RoleableTrait;
-     *      
-     *      public function rules() {
-     *          return array_merge([
-     *              //Other rules
-     *          ], $this->roleRules());
-     *      }
-     *  }
-     * ```
-     * @return array
-     */
-    public function roleRules() {
-        return [
-            [$this->roleFieldName(), 'integer', 'min' => 1, 'max' => (1 << $this->rolesCount()) - 1]
-        ];
-    }
-
-    /**
      * @inheritdoc
      */
     public function setRole($v) {
@@ -55,33 +31,6 @@ trait RoleableTrait {
      */
     public function getRole() {
         return $this->{$this->roleFieldName()};
-    }
-
-    /**
-     * Adds a role to the object.
-     * 
-     * @param mixed $v The role to add.
-     */
-    public function addRole($v) {
-        RoleControl::add($this, $v);
-    }
-
-    /**
-     * Checks if the object has the rol.
-     * 
-     * @param mixed $v The role to check.
-     */
-    public function hasRole($v) {
-        RoleControl::check($this, $v);
-    }
-
-    /**
-     * Get the number of roles of the Roleable object.
-     * 
-     * @return int
-     */
-    public function rolesCount() {
-        return count($this->getValidRoles());
     }
 
     /**

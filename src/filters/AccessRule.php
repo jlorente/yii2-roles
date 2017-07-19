@@ -9,9 +9,11 @@
 
 namespace jlorente\roles\filters;
 
-use yii\filters\AccessRule as BaseAccessRule;
-use jlorente\roles\models\RoleControl;
 use yii\web\User;
+use jlorente\roles\Module;
+use yii\filters\AccessRule as BaseAccessRule;
+use jlorente\roles\models\Role,
+    jlorente\roles\models\Roleable;
 
 /**
  * AccessRule class to extend yii AccessRule class with custom behaviors.
@@ -27,6 +29,14 @@ class AccessRule extends BaseAccessRule {
      * If this property is not set or empty, it means this rule applies to all roles.
      */
     public $userRoles;
+
+    /**
+     * Determines whether to match the roles to the session role data or to the 
+     * identity model role data.
+     * 
+     * @var boolean 
+     */
+    public $matchAgainstSession = null;
 
     /**
      * @see http://www.yiiframework.com/doc-2.0/yii-filters-accessrule.html#allows()-detail
@@ -52,8 +62,11 @@ class AccessRule extends BaseAccessRule {
         if (empty($this->userRoles)) {
             return true;
         }
+        $mSession = is_bool($this->matchAgainstSession) ? $this->matchAgainstSession : Module::getInstance()->matchAgainstSession;
+        /* @var $roleable Roleable */
+        $roleable = $mSession === true ? $user : $user->identity;
         foreach ($this->userRoles as $role) {
-            if (RoleControl::check($user->identity, $role)) {
+            if (Role::sHasRole($roleable, $role) === true) {
                 return true;
             }
         }
