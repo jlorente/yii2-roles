@@ -97,7 +97,7 @@ class Module extends BaseModule implements BootstrapInterface {
      * @var boolean 
      */
     public $matchAgainstSession = false;
-    
+
     /**
      * Platform available roles.
      * 
@@ -126,9 +126,11 @@ class Module extends BaseModule implements BootstrapInterface {
      * @param \yii\web\Application $app
      */
     public function bootstrap($app) {
-        $app->setComponents([
-            'user' => ArrayHelper::merge(isset($app->components['user']) ? $app->components['user'] : [], $this->user)
-        ]);
+        if (is_a($app, 'yii\\web\\Application') === true) {
+            $app->setComponents([
+                'user' => ArrayHelper::merge(isset($app->components['user']) ? $app->components['user'] : [], $this->user)
+            ]);
+        }
     }
 
 }
