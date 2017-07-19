@@ -232,3 +232,5 @@ defining access rules, etc...
 
 ## License 
 Copyright &copy; 2016 José Lorente Martín <jose.lorente.martin@gmail.com>.
+
+Licensed under the MIT license. See LICENSE.txt for details.
