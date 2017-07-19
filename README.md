@@ -1,8 +1,13 @@
 Yii2 Roles
 ==========
 
-A Yii2 extension which includes the concept of roles into the application, which 
-can be assigned to users and checked at the level of access to the controllers.
+A Yii2 extension that includes the concept of roles in the framework. Useful to 
+handle user access to controllers actions allowed only for some roles and filter 
+database resources.
+
+The role storage design is optimized to use a single database field following 
+the data structure of a "bit field" or "flag" that can hold a large number of 
+roles and all the possible combinations of them occupying the space of a integer.
 
 ## Installation
 

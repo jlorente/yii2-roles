@@ -1,6 +1,6 @@
 {
     "name": "jlorente/yii2-roles",
-    "description": "A Yii2 extension which includes the concept of roles into the application, which can be assigned to users and checked at the level of access to the controllers",
+    "description": "A Yii2 extension that includes the concept of roles in the framework. Useful to handle user access to controllers actions allowed only for some roles and filter database resources.",
     "keywords": ["yii2", "roles", "access", "controller", "rules"],
     "homepage": "https://github.com/jlorente/yii2-roles",
     "type": "yii2-extension",
