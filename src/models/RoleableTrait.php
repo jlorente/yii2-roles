@@ -22,6 +22,24 @@ trait RoleableTrait {
     /**
      * @inheritdoc
      */
+    public function rules() {
+        return array_merge(parent::rules(), $this->roleableRules());
+    }
+
+    /**
+     * The validation rules for the role field.
+     * 
+     * @return array
+     */
+    public function roleableRules() {
+        return [
+            [$this->roleFieldName(), 'integer']
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function setRole($v) {
         $this->{$this->roleFieldName()} = $v;
     }
