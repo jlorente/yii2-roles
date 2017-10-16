@@ -46,7 +46,7 @@ or extend this migration in your project and apply it as usually.
 You can override the roleableTableName() and the roleFieldName() methods in 
 order to provide another table and field names to hold the role value.
 
-###Module setup
+### Module setup
 You must add this module to the module section and the bootstrap section of the 
 application config file in order to make it work.
   
